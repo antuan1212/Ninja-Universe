@@ -1,0 +1,76 @@
+// DM Environment file for Naruto Universe.dme.
+// All manual changes should be made outside the BEGIN_ and END_ blocks.
+// New source code should be placed in .dm files: choose File/New --> Code File.
+
+// BEGIN_INTERNALS
+// END_INTERNALS
+
+// BEGIN_FILE_DIR
+#define FILE_DIR .
+#define FILE_DIR "code"
+#define FILE_DIR "code/character creator"
+#define FILE_DIR "code/chat"
+#define FILE_DIR "code/combat"
+#define FILE_DIR "code/hud"
+#define FILE_DIR "code/interface"
+#define FILE_DIR "code/libraries"
+#define FILE_DIR "code/movement"
+#define FILE_DIR "code/turf"
+#define FILE_DIR "media"
+#define FILE_DIR "media/icons"
+#define FILE_DIR "media/icons/Bases"
+#define FILE_DIR "media/icons/Clothing"
+#define FILE_DIR "media/icons/dogs"
+#define FILE_DIR "media/icons/Hair"
+#define FILE_DIR "media/icons/Jutsu Effects"
+#define FILE_DIR "media/icons/obj"
+#define FILE_DIR "media/icons/puppets"
+#define FILE_DIR "media/icons/turf"
+#define FILE_DIR "media/icons/turf/mist"
+#define FILE_DIR "media/maps"
+#define FILE_DIR "media/ui"
+#define FILE_DIR "media/ui/Clan Selection"
+#define FILE_DIR "media/ui/interface elements"
+#define FILE_DIR "media/ui/portraits"
+// END_FILE_DIR
+
+// BEGIN_PREFERENCES
+// END_PREFERENCES
+
+// BEGIN_INCLUDE
+#include <shadowdarke\bigatom\BigAtom.dme>
+#include "Naruto Universe.dm"
+#include "code\Login.dm"
+#include "code\Macros.dm"
+#include "code\Mob Variables.dm"
+#include "code\character creator\CharCreator.dm"
+#include "code\character creator\Clans.dm"
+#include "code\character creator\Hair Color.dm"
+#include "code\character creator\Portrait.dm"
+#include "code\character creator\Procedures.dm"
+#include "code\character creator\Village.dm"
+#include "code\chat\Chat.dm"
+#include "code\combat\Battle Objects.dm"
+#include "code\combat\Combat.dm"
+#include "code\combat\Target.dm"
+#include "code\combat\Weapons.dm"
+#include "code\hud\Actions.dm"
+#include "code\hud\Hotbar.dm"
+#include "code\hud\HUD.dm"
+#include "code\hud\HudBar.dm"
+#include "code\hud\Portrait.dm"
+#include "code\interface\Interface.dm"
+#include "code\interface\Inventory.dm"
+#include "code\interface\Item.dm"
+#include "code\interface\Windows.dm"
+#include "code\libraries\Nadrew_rangedetection.dm"
+#include "code\libraries\Pixel_Projectiles.dm"
+#include "code\libraries\s_damage.dm"
+#include "code\libraries\s_damage_color2html.dm"
+#include "code\movement\Movement.dm"
+#include "code\turf\Login_Turf.dm"
+#include "code\turf\Turf.dm"
+#include "media\maps\Naruto Map.dmm"
+#include "media\ui\Interface.dmf"
+// END_INCLUDE
+
