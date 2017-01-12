@@ -1,11 +1,9 @@
 mob/player
 	verb
 		Say(t as text)
-			if(t)
-				view() << output("<font color=#603311>[src] says:</font> [t]", "chatOutput")
+			viewers() << output("<font color=#603311>[src] says:</font> [t]", "chatOutput")
 		WorldChat(t as text)
-			if(t)
-				world << output("<b>[src]</b>: <font color=#329555>[t]</font>","chatOutput")
+			world << output("<b>[src]</b>: <font color=#329555>[t]</font>","chatOutput")
 
 mob/player
 	verb
