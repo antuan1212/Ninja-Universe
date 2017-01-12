@@ -31,6 +31,22 @@ CharCreator
 					"NoneOther"= /obj/Clan/NoneOther)
 					)
 
+			baseList = list(
+				'palebase.dmi' = list('03.dmi','06.dmi', '09.dmi'),
+				'midbase.dmi'  = list('01.dmi', '04.dmi', '07.dmi'),
+				'darkbase.dmi' = list('02.dmi','05.dmi', '08.dmi')
+				)
+
+			baseListF = list(
+				'palebasef.dmi' = list('03f.dmi','06f.dmi', '09f.dmi'),
+				'midbasef.dmi'  = list('01f.dmi', '04f.dmi', '07f.dmi'),
+				'darkbasef.dmi' = list('02f.dmi','05f.dmi', '08f.dmi')
+				)
+
+			hairlist = list(null, 'naruto.dmi', 'anko.dmi', 'sakura.dmi', 'shaved.dmi')				//represents the list of possible hairs that a user can add to his icon.
+			hairportraits = list(null, 'NarutoHairPortrait.dmi', 'ankop.dmi', 'sakurazp.dmi', 'shavedp.dmi')	//represents the list of portraits of hairs that a user can add to their portrait.
+
+
 	proc
 		hairColorChange(var/check, var/px, var/py, var/y_loc, var/y_offset, var/name)
 			if(currentHair == 1)
