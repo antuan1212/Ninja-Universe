@@ -1,88 +1,36 @@
 CharCreator
 	var
-		mob/player/p					// The player that this CharCreator is handling.
-		currentClan		= "None"		// The currently selected Clan.
-		currentVillage	= ""		    // The currently selected Village. (Determines available clans.)
+		mob/player/p				// The player that this CharCreator is handling.
+		currentClan	= "None"		// The currently selected Clan.
+		currentVillage	= ""			// The currently selected Village. (Determines available clans.)
 		//currentPortrait = '03.dmi'
-		baseindex 		= 1
+		baseindex 	= 1
 		portraitindex   = 1
 		currentHair 	= 1
-		faceindex		= 1
-		redHair			= "#000000"
-		blueHair		= "#000000"
-		greenHair		= "#000000"
+		faceindex	= 1
+		redHair		= "#000000"
+		blueHair	= "#000000"
+		greenHair	= "#000000"
 		list
-			/*
-				clanList is an associated list of associated lists. It first indexes the clans by village name.
-				Asking clanList for the value given a village name key results in second associated list that indexes
-				clan type paths by name.
+			clanList = list(
+				"Konoha"= list(
+					"Aburame"= /obj/Clan/Aburame,
+					"Akimichi"= /obj/Clan/Akimichi,
+					"Hyuuga"= /obj/Clan/Hyuuga,
+					"Inuzuka"= /obj/Clan/Inuzuka,
+					"Nara"= /obj/Clan/Nara,
+					"Uchiha"= /obj/Clan/Uchiha,
+					"None"= /obj/Clan/None),
+				"Sunagakure"= list(
+					"Sand"= /obj/Clan/Sand,
+					"Puppet"= /obj/Clan/Puppet,
+					"NoneOther"= /obj/Clan/NoneOther),
+				"Kirigakure"= list(
+					"Haku"= /obj/Clan/Haku,
+					"Kaguya"= /obj/Clan/Kaguya,
+					"NoneOther"= /obj/Clan/NoneOther)
+					)
 
-				Example:
-					If we wanted to iterate through all the villages in the list.
-					for(var/villageName in clanList)
-						This would iterate 3 times, once for each village in the list.
-						First iteration would have villageName = "Konoha"
-						Second iteration would have villageName = "Sunagakure"
-						Third iteration would have the villageName = "Kirigakure"
-
-					If we were to see what clans were part of Konoha village.
-						var/list/clans = clanList["Konoha"]
-						for(var/clanName in clans)
-							This would iterate seven times, once for each clan in the clans list.
-							First iteration would have clanName = "Aburame"
-							Second iteration would have clanName = "Akimichi"
-							...
-							Seventh iteration would have clanName = "None"
-
-					If you wanted to extract the type path of a clan.
-						Given clanName = "Aburame"
-						var/typePath = clans[clanName]
-
-						world << typePath // This would output: /obj/Clan/Aburame
-			*/
-			clanList = list("Konoha"		= list("Aburame" 	= /obj/Clan/Aburame,
-												   "Akimichi"	= /obj/Clan/Akimichi,
-												   "Hyuuga"		= /obj/Clan/Hyuuga,
-												   "Inuzuka"	= /obj/Clan/Inuzuka,
-												   "Nara" 		= /obj/Clan/Nara,
-												   "Uchiha"		= /obj/Clan/Uchiha,
-												   "None" 		= /obj/Clan/None),
-							"Sunagakure"	= list("Sand"		= /obj/Clan/Sand,
-							 					   "Puppet" 	= /obj/Clan/Puppet,
-												   "NoneOther"	= /obj/Clan/NoneOther),
-							"Kirigakure"	= list("Haku"		= /obj/Clan/Haku,
-												   "Kaguya" 	= /obj/Clan/Kaguya,
-												   "NoneOther"	= /obj/Clan/NoneOther)
-							)
-
-			/***
-			baseList is an associated list of bases which are the keys for the different portraits of that base color.
-			baseListF is the same as baseList, except for female bases.
-			***/
-			baseList = list('palebase.dmi' = list('03.dmi','06.dmi', '09.dmi'),
-							'midbase.dmi'  = list('01.dmi', '04.dmi', '07.dmi'),
-							'darkbase.dmi' = list('02.dmi','05.dmi', '08.dmi')
-							)
-			baseListF = list('palebasef.dmi' = list('03f.dmi','06f.dmi', '09f.dmi'),
-							 'midbasef.dmi'  = list('01f.dmi', '04f.dmi', '07f.dmi'),
-							 'darkbasef.dmi' = list('02f.dmi','05f.dmi', '08f.dmi')
-							)
-			hairlist = list(null, 'naruto.dmi', 'anko.dmi', 'sakura.dmi', 'shaved.dmi') 						//represents the list of possible hairs that a user can add to his icon.
-			hairportraits = list(null, 'NarutoHairPortrait.dmi', 'ankop.dmi', 'sakurazp.dmi', 'shavedp.dmi')	//represents the list of portraits of hairs that a user can add to their portrait.
-
-		/***
-			hairColorChange takes in the following variables:
-			check:		this represents the color passed in. (ex.: #000000 represents black)
-			px:			represents the location of the x pixel of where we clicked
-			py:			represents the location of the y pixel of where we clicked
-			y_loc:		this is used for placing the select slide bar on the appropriate slider (red, blue, and green)
-			y_offset:	same as above
-			name:		name of the color. We need this so that we can store the color in the name of the color so that if the user wants to
-						increase or decrease the amount of said color, we can remove the amount of said color stored so that the user may do so.
-
-			This proc will remove whatever is stored in the said colors variable and the select bar associated with it,
-			then add whatever the new color is to the hair and add a new select.
-		***/
 	proc
 		hairColorChange(var/check, var/px, var/py, var/y_loc, var/y_offset, var/name)
 			if(currentHair == 1)
